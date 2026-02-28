@@ -1,5 +1,3 @@
-# DYANAMIC-PATHFINDING-AGENT
-
 # Dynamic Pathfinding Agent
 
 This project implements a graphical pathfinding agent using informed search algorithms.
@@ -18,5 +16,11 @@ Manhattan and Euclidean heuristics in both static and dynamic environments.
 
 ---
 
+## Installation & Running
 
+### Requirements
+- Python 3.8+
 
+### Run the Program
+```bash
+python src/pathfinding_gui.py
