@@ -39,3 +39,20 @@ class Grid:
         return (0 <= row < self.rows and 
                 0 <= col < self.cols and 
                 self.grid[row][col] == 0)
+# ============================================================
+# HEURISTIC FUNCTIONS 
+# ============================================================
+def manhattan_distance(pos1, pos2):
+    """Manhattan Distance: |x1-x2| + |y1-y2|"""
+    return abs(pos1[0] - pos2[0]) + abs(pos1[1] - pos2[1])
+
+def euclidean_distance(pos1, pos2):
+    """Euclidean Distance: √[(x1-x2)² + (y1-y2)²]"""
+    return math.sqrt((pos1[0] - pos2[0])**2 + (pos1[1] - pos2[1])**2)
+
+def get_heuristic(name):
+    """Return the selected heuristic function"""
+    if name == "Manhattan":
+        return manhattan_distance
+    else:  
+        return euclidean_distance
