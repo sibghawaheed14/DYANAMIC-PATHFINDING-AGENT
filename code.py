@@ -526,3 +526,38 @@ class PathfindingGUI:
         print("Starting main loop...")
         self.root.mainloop()
 
+
+
+# ============================================================
+# MAIN 
+# ============================================================
+if __name__ == "__main__":
+    print("=" * 60)
+    print("DYNAMIC PATHFINDING AGENT")
+    print("=" * 60)
+    print("\nIMPLEMENTED ALGORITHMS:")
+    print("  • A* Search: f(n) = g(n) + h(n)")
+    print("  • Greedy Best-First Search: f(n) = h(n)")
+    print("\nHEURISTIC FUNCTIONS:")
+    print("  • Manhattan Distance: |x1-x2| + |y1-y2|")
+    print("  • Euclidean Distance: √[(x1-x2)² + (y1-y2)²]")
+    print("\nCONTROLS:")
+    print("  • Click: Toggle obstacle")
+    print("  • Shift+Click: Set start position (S)")
+    print("  • Ctrl+Click: Set goal position (G)")
+    print("  • Dropdowns: Switch algorithms and heuristics")
+    print("  • 'Find Path': Run selected algorithm")
+    print("  • 'Random Map': Generate new random map")
+    print("  • 'Clear': Clear current path")
+    print("  • 'Dynamic Mode': Watch obstacles appear and path recalculate!")
+    print("\n" + "=" * 60)
+    print("\nStarting application...")
+    
+    try:
+        app = PathfindingGUI(rows=15, cols=20)
+        app.run()
+    except Exception as e:
+        print(f"\nERROR: {e}")
+        import traceback
+        traceback.print_exc()
+        input("\nPress Enter to exit...")
