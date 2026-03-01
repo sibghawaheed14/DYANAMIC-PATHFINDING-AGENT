@@ -253,7 +253,7 @@ class PathfindingGUI:
         self.root.geometry(f"{self.grid_width + 40}x{self.grid_height + 280}")
         
         self.grid = Grid(rows, cols, obstacle_density=0.3)
-        self.dynamic_manager = SimpleDynamicObstacleManager(self.grid)  # Using simpler version
+        self.dynamic_manager = SimpleDynamicObstacleManager(self.grid)  
         
         self.COLORS = {
             'empty': 'white',
