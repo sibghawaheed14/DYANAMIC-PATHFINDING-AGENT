@@ -551,7 +551,6 @@ if __name__ == "__main__":
     print("  • 'Clear': Clear current path")
     print("  • 'Dynamic Mode': Watch obstacles appear and path recalculate!")
     print("\n" + "=" * 60)
-    print("\nStarting application...")
     
     try:
         app = PathfindingGUI(rows=15, cols=20)
