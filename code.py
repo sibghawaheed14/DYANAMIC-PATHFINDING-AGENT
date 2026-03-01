@@ -132,30 +132,25 @@ def astar_search(grid, start, goal, heuristic_func):
     return None, visited, nodes_visited, 0, time_taken, frontier_nodes
 
 # ============================================================
-# GREEDY BFS ALGORITHM - f(n) = h(n) only
+# GREEDY BFS ALGORITHM 
 # ============================================================
 def greedy_bfs_search(grid, start, goal, heuristic_func):
    
     
-    # Priority queue: (h_score, counter, node)
     frontier = []
     counter = 0
     heapq.heappush(frontier, (heuristic_func(start, goal), counter, start))
     frontier_set = {start}
     
-    # Track where we came from
     came_from = {}
     
-    # Track visited nodes
     visited = set()
     frontier_nodes = {start}
     
-    # Metrics
     nodes_visited = 0
     start_time = time.time()
     
     while frontier:
-        # Get node with smallest h_score (only heuristic)
         current = heapq.heappop(frontier)[2]
         frontier_set.remove(current)
         frontier_nodes.remove(current)
@@ -166,9 +161,7 @@ def greedy_bfs_search(grid, start, goal, heuristic_func):
         visited.add(current)
         nodes_visited += 1
         
-        # Check if we reached the goal
         if current == goal:
-            # Reconstruct path
             path = []
             while current != start:
                 path.append(current)
@@ -179,12 +172,11 @@ def greedy_bfs_search(grid, start, goal, heuristic_func):
             time_taken = (time.time() - start_time) * 1000
             return path, visited, nodes_visited, len(path)-1, time_taken, frontier_nodes
         
-        # Check all 4 neighbors
         neighbors = [
-            (current[0] - 1, current[1]),  # up
-            (current[0] + 1, current[1]),  # down
-            (current[0], current[1] - 1),  # left
-            (current[0], current[1] + 1)   # right
+            (current[0] - 1, current[1]), 
+            (current[0] + 1, current[1]), 
+            (current[0], current[1] - 1),  
+            (current[0], current[1] + 1)   
         ]
         
         for neighbor in neighbors:
@@ -193,13 +185,13 @@ def greedy_bfs_search(grid, start, goal, heuristic_func):
             
             if neighbor not in visited and neighbor not in frontier_set:
                 came_from[neighbor] = current
-                # f(n) = h(n) only - just the heuristic
                 h_score = heuristic_func(neighbor, goal)
                 counter += 1
                 heapq.heappush(frontier, (h_score, counter, neighbor))
                 frontier_set.add(neighbor)
                 frontier_nodes.add(neighbor)
     
-    # No path found
     time_taken = (time.time() - start_time) * 1000
     return None, visited, nodes_visited, 0, time_taken, frontier_nodes
+
+
